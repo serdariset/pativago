@@ -45,7 +45,6 @@ export default {
   },
      methods:{
     startSlide(val){
-      console.log('geldi')
       this.visibleSlide = val
 
     },

@@ -5,7 +5,7 @@
         <i class="fas fa-user"></i>
       </div>
       <div class="comment-card-client">
-        <h3 class="comment-card-client-name">{{ comment.name }}</h3>
+        <h3 class="comment-card-client-name">{{ comment.name  }}</h3>
         <p class="comment-card-client-description">
           {{ comment.description }}
         </p>
@@ -50,7 +50,7 @@ align-items: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
 }
 .comment-card-user {

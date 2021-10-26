@@ -38,7 +38,24 @@
             "101/101-4.jpeg",
             "101/101-5.jpeg"
         ],
-        "price": 850
+        "price": [
+            {
+                "type":"standart",
+                "price":850
+            },
+            {
+                "type":"suite",
+                "price":1150
+            },
+            {
+                "type":"businness",
+                "price":1650
+            },
+            {
+                "type":"king",
+                "price":2250
+            }
+        ]
     },
     {
         "hotelID": 102,

@@ -54,8 +54,8 @@ export default {
   height: 60px;
   background-color: #cfd8dc;
   display: flex;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .tags span {
   width: 50%;
@@ -94,5 +94,6 @@ export default {
   padding: 1rem;
   height: 275px;
   background-color: #cfd8dc;
+  border-radius: 0 0 5px 5px;
 }
 </style>

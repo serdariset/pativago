@@ -3,7 +3,7 @@
     <div class="hotel-container">
       <div class="top-side">
         <Slider :photos="getData.photos" />
-        <Rezervation/>
+        <Rezervation :data="[getData.hotelName,getData.location,getData.rating,getData.price]"/>
       </div>
       <Properties :comments="getData.comments" :services="getData.services"/>
     </div>
