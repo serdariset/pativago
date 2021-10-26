@@ -1,0 +1,146 @@
+[
+    {
+        "hotelID": 101,
+        "hotelName": "Swissotel The Bosphorus",
+        "location": "İstanbul",
+        "rating": 4,
+        "comments": [
+            {
+                "name": "Ali Bozbey",
+                "description": "İstanbul’da konaklamak ve toplantı için Harika bir otel şiddetle tavsiye edilir.",
+                "rate":"9.3"
+            },
+            {
+                "name": "Ayla Şimşek",
+                "description": "Manzara konfor harika.. En güzel anların yaşanacağı mekan..",
+                "rate":"9.6"
+            },
+            {
+                "name": "Ezgi Güngör",
+                "description": "Bence fiyatı kalitesine ve manzarasına göre gayet makul.",
+                "rate":"8.8"
+            },
+            {
+                "name": "Serdar Mutlu",
+                "description": "Ön kapı dormenler rezalet birgün birini sakat bırakacaklar bunun dışında diğer arkadaşlar çözüm odaklı içerisi ise ayrı bir dünya servisin ve ikramların tadını çıkarın",
+                "rate":"7.9"
+            }
+        ],
+        "photos": [
+            "101/101-1.jpeg",
+            "101/101-2.jpeg",
+            "101/101-3.jpeg",
+            "101/101-4.jpeg",
+            "101/101-5.jpeg"
+        ],
+        "price": 850
+    },
+    {
+        "hotelID": 102,
+        "hotelName": "Swissotel The Bosphorus",
+        "location": "İstanbul",
+        "rating": 4,
+        "comments": [
+            {
+                "name": "Ali Bozbey",
+                "description": "İstanbul’da konaklamak ve toplantı için Harika bir otel şiddetle tavsiye edilir.",
+                "rate":"9.3"
+            },
+            {
+                "name": "Ayla Şimşek",
+                "description": "Manzara konfor harika.. En güzel anların yaşanacağı mekan..",
+                "rate":"9.6"
+            },
+            {
+                "name": "Ezgi Güngör",
+                "description": "Bence fiyatı kalitesine ve manzarasına göre gayet makul.",
+                "rate":"8.8"
+            },
+            {
+                "name": "Serdar Mutlu",
+                "description": "Ön kapı dormenler rezalet birgün birini sakat bırakacaklar bunun dışında diğer arkadaşlar çözüm odaklı içerisi ise ayrı bir dünya servisin ve ikramların tadını çıkarın",
+                "rate":"7.9"
+            }
+        ],
+        "photos": [
+            "101/101-1.jpeg",
+            "101/101-2.jpeg",
+            "101/101-3.jpeg",
+            "101/101-4.jpeg",
+            "101/101-5.jpeg"
+        ],
+        "price": 850
+    },
+    {
+        "hotelID": 103,
+        "hotelName": "Swissotel The Bosphorus",
+        "location": "İstanbul",
+        "rating": 4,
+        "comments": [
+            {
+                "name": "Ali Bozbey",
+                "description": "İstanbul’da konaklamak ve toplantı için Harika bir otel şiddetle tavsiye edilir.",
+                "rate":"9.3"
+            },
+            {
+                "name": "Ayla Şimşek",
+                "description": "Manzara konfor harika.. En güzel anların yaşanacağı mekan..",
+                "rate":"9.6"
+            },
+            {
+                "name": "Ezgi Güngör",
+                "description": "Bence fiyatı kalitesine ve manzarasına göre gayet makul.",
+                "rate":"8.8"
+            },
+            {
+                "name": "Serdar Mutlu",
+                "description": "Ön kapı dormenler rezalet birgün birini sakat bırakacaklar bunun dışında diğer arkadaşlar çözüm odaklı içerisi ise ayrı bir dünya servisin ve ikramların tadını çıkarın",
+                "rate":"7.9"
+            }
+        ],
+        "photos": [
+            "101/101-1.jpeg",
+            "101/101-2.jpeg",
+            "101/101-3.jpeg",
+            "101/101-4.jpeg",
+            "101/101-5.jpeg"
+        ],
+        "price": 850
+    },
+    {
+        "hotelID": 104,
+        "hotelName": "Swissotel The Bosphorus",
+        "location": "İstanbul",
+        "rating": 4,
+        "comments": [
+            {
+                "name": "Ali Bozbey",
+                "description": "İstanbul’da konaklamak ve toplantı için Harika bir otel şiddetle tavsiye edilir.",
+                "rate":"9.3"
+            },
+            {
+                "name": "Ayla Şimşek",
+                "description": "Manzara konfor harika.. En güzel anların yaşanacağı mekan..",
+                "rate":"9.6"
+            },
+            {
+                "name": "Ezgi Güngör",
+                "description": "Bence fiyatı kalitesine ve manzarasına göre gayet makul.",
+                "rate":"8.8"
+            },
+            {
+                "name": "Serdar Mutlu",
+                "description": "Ön kapı dormenler rezalet birgün birini sakat bırakacaklar bunun dışında diğer arkadaşlar çözüm odaklı içerisi ise ayrı bir dünya servisin ve ikramların tadını çıkarın",
+                "rate":"7.9"
+            }
+        ],
+        "photos": [
+            "101/101-1.jpeg",
+            "101/101-2.jpeg",
+            "101/101-3.jpeg",
+            "101/101-4.jpeg",
+            "101/101-5.jpeg"
+        ],
+        "price": 850
+    }
+]
