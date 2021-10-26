@@ -59,11 +59,7 @@
             </div>
           </div>
           <div class="price-box">
-            
-              <!-- <button @click="goToSelfPage(item.hotelID)"> GOOO</button> -->
-
-              <router-link :to="`/hotel/${item.hotelID}`"> Gooo</router-link>
-            
+            <router-link :to="`/hotel/${item.hotelID}`"> Gooo</router-link>
           </div>
         </div>
         <div class="bottom-side" :id="`bottomSide${item.hotelID}`">
@@ -109,7 +105,13 @@
                   </p>
                   <span
                     class="client-rating"
-                    :class="comment.rate > 9 ? 'green' : comment.rate < 9 && comment.rate > 8 ? 'yellow' : 'red'"
+                    :class="
+                      comment.rate > 9
+                        ? 'green'
+                        : comment.rate < 9 && comment.rate > 8
+                        ? 'yellow'
+                        : 'red'
+                    "
                     >{{ comment.rate }}</span
                   >
                 </span>
@@ -122,12 +124,24 @@
               asda
             </div>
             <div
-              :class="['bottom-boxes', `bottom-boxes${item.hotelID}`,'photos-container']"
-              :id="`photos${item.hotelID}`">
-              <span class="mini-images" v-for="(image,index) in item.photos" :key="index">
-                <img :src="require(`@/assets/images/${image}`)" :alt="'image'+index" class="mini-image">
+              :class="[
+                'bottom-boxes',
+                `bottom-boxes${item.hotelID}`,
+                'photos-container',
+              ]"
+              :id="`photos${item.hotelID}`"
+            >
+              <span
+                class="mini-images"
+                v-for="(image, index) in item.photos"
+                :key="index"
+              >
+                <img
+                  :src="require(`@/assets/images/${image}`)"
+                  :alt="'image' + index"
+                  class="mini-image"
+                />
               </span>
-            
             </div>
           </div>
         </div>
@@ -143,15 +157,14 @@ export default {
   data() {
     return {
       data: json,
-
     };
   },
-  computed:{
-    hotelPage(){
-      return `/hotel/${this.data[0].hotelID}`
-    }
+  computed: {
+    hotelPage() {
+      return `/hotel/${this.data[0].hotelID}`;
+    },
   },
- 
+
   methods: {
     addFavorite() {
       //Favorite button color and type change
@@ -161,8 +174,7 @@ export default {
       console.log(this.data.comments);
     },
 
-    showServiceBox( val, id) {
-      
+    showServiceBox(val, id) {
       //Show bottom side and card container change
       let cardContainer = document.getElementById(`cardContainer${id}`);
       cardContainer.classList.toggle("activeCard");
@@ -190,7 +202,6 @@ export default {
       }
 
       document.getElementById(val + id).style.display = "flex";
-      
     },
 
     changeBox(event, val, id) {
@@ -477,31 +488,30 @@ export default {
 .yellow {
   background-color: orange;
 }
-.photos-container{
+.photos-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height:220px;
+  height: 220px;
   padding: 1rem;
   width: 100%;
 }
-.mini-images{
+.mini-images {
   width: 185px;
   height: 150px;
   background-color: green;
-  border-radius:15px ;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  
 }
-.mini-image{
+.mini-image {
   max-height: 100%;
   transform: scale(1);
   transition: 0.3s ease;
 }
-.mini-image:hover{
+.mini-image:hover {
   transform: scale(1.25);
 }
 </style>

@@ -26,6 +26,11 @@
                 "rate":"7.9"
             }
         ],
+        "services":[
+            {"internet":"fas fa-connection"},
+            {"vale":"fas fa-connection"},
+            {"açık büfe":"fas fa-connection"}
+        ],
         "photos": [
             "101/101-1.jpeg",
             "101/101-2.jpeg",
