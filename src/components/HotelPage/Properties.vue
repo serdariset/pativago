@@ -2,41 +2,53 @@
   <div class="properties-container">
     <div class="tags">
       <span @click="changeBox(0)" :class="showBox == 0 ? 'activeSpan' : ''"
-        >Comments</span
+        >Options</span
       >
       <span @click="changeBox(1)" :class="showBox == 1 ? 'activeSpan' : ''"
-        >Services</span
+        >Comments</span
       >
     </div>
     <div class="boxes">
-      <div class="assa" v-if="showBox == 0">
+      <div class="options-box" v-if="showBox == 0">
+        <OptionsBox :options="options" @take-option="takeOption($event)" />
+      </div>
+      <div class="comment-card-box" v-else-if="showBox == 1">
         <CommentCard :comments="comments"></CommentCard>
       </div>
-      <div class="box comment-box" v-else-if="showBox == 1"></div>
     </div>
   </div>
 </template>
 
 <script scoped>
 import CommentCard from "./CommentCard.vue";
+import OptionsBox from "./OptionBox.vue";
+
 export default {
-  name: "Services",
+  name: "Properties",
   props: {
     comments: Array,
-    services: Array,
+    options: Array,
   },
   data() {
     return {
       showBox: 0,
+      getOption: [],
     };
   },
   methods: {
     changeBox(val) {
       this.showBox = val;
     },
+    takeOption(value) {
+
+      this.getOption = value
+      this.$emit('take-option',this.getOption)
+    },
   },
+
   components: {
     CommentCard,
+    OptionsBox,
   },
 };
 </script>
@@ -86,7 +98,7 @@ export default {
   border-bottom-right-radius: 10px;
 }
 
-.assa {
+.comment-card-box {
   display: flex;
   justify-content: space-between;
   align-items: center;

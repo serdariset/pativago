@@ -71,10 +71,7 @@
             {{ option.type | capitalize }}
             </span>
         </div>
-        <div class="rezerve-button">
-          <span class="total-price">{{(getPrices * quantityAdult) +( quantityChild*getPrices/2)}}$</span>
-          <button class="rezerve">Rezerve</button>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -271,43 +268,6 @@ export default {
 }
 .selected-option {
   border: 3px solid #03a9f4;
-}
-.rezerve-button {
-  width: 100%;
-  height: 95px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-.rezerve {
-  outline: none;
-  border: none;
-  width: 150px;
-  height: 50px;
-  border-radius: 10px;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.3rem;
-  background-color: #03a9f4;
-  color: white;
-  transition: 0.3s ease;
-}
-.rezerve:hover {
-  background-color: #0094d8;
-  cursor: pointer;
-}
-.total-price {
-  width: 90px;
-  height: 50px;
-  border-radius: 10px;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.3rem;
-  background-color: #03a9f4;
-  margin-right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  cursor: default;
 }
 </style>
 

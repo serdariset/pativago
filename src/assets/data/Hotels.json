@@ -31,6 +31,28 @@
             {"vale":"fas fa-connection"},
             {"açık büfe":"fas fa-connection"}
         ],
+        "options": [
+            {
+                "name":"spa",
+                "price":200,
+                "icon":"fas fa-spa"
+            },
+            {
+                "name":"service",
+                "price":50,
+                "icon":"fas fa-concierge-bell"
+            },
+            {
+                "name":"drinks",
+                "price":150,
+                "icon":"fas fa-coffee"
+            },
+            {
+                "name":"wifi",
+                "price":100,
+                "icon":"fas fa-wifi"
+            }
+        ],
         "photos": [
             "101/101-1.jpeg",
             "101/101-2.jpeg",

@@ -3,9 +3,18 @@
     <div class="hotel-container">
       <div class="top-side">
         <Slider :photos="getData.photos" />
-        <Rezervation :data="[getData.hotelName,getData.location,getData.rating,getData.price]"/>
+       <div class="right-side">
+          <Rezervation :data="[getData.hotelName,getData.location,getData.rating,getData.price,getData.options]"/>
+          <div class="rezerve-button">
+          <span class="total-price"><!-- {{(getPrices * quantityAdult) +( quantityChild*getPrices/2)}} -->$</span>
+          <button class="rezerve" >Rezerve</button>
+        </div>
+       </div>
+       
+        
       </div>
-      <Properties :comments="getData.comments" :services="getData.services"/>
+      <Properties :comments="getData.comments" :options="getData.options" @take-option="takeOption($event)"/>
+
     </div>
   </div>
 </template>
@@ -23,7 +32,13 @@ export default {
     return {
       HotelsData: json,
       getData: [],
+      getOption:[],
     };
+  },
+  methods:{
+    takeOption(val){
+      this.getOption = val
+    }
   },
   created() {
     for (let i = 0; i < this.HotelsData.length; i++) {
@@ -32,6 +47,7 @@ export default {
       }
     }
   },
+  
   components: {
     Slider,
     Properties,
@@ -54,5 +70,50 @@ export default {
 }
 .top-side{
   display: flex;
+}
+.right-side{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.rezerve-button {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  bottom: 50px;
+}
+.rezerve {
+  outline: none;
+  border: none;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  background-color: #03a9f4;
+  color: white;
+  transition: 0.3s ease;
+}
+.rezerve:hover {
+  background-color: #0094d8;
+  cursor: pointer;
+}
+.total-price {
+  width: 90px;
+  height: 50px;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  background-color: #03a9f4;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: default;
 }
 </style>
