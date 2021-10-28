@@ -196,17 +196,18 @@ export default {
 .selection-error {
   width: 248px;
   height: 25px;
-  background-color: rgb(243, 111, 111);
+  background-color: rgb(255, 143, 143);
   align-items: center;
   display: flex;
   justify-content: center;
   font-family: "Poppins", sans-serif;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 0.75rem;
   position: absolute;
   top: -35px;
   color: white;
   border: 2px solid red;
   display: none;
+  font-weight: 400;
 }
 </style>
