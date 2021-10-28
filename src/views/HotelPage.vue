@@ -3,18 +3,42 @@
     <div class="hotel-container">
       <div class="top-side">
         <Slider :photos="getData.photos" />
-       <div class="right-side">
-          <Rezervation :data="[getData.hotelName,getData.location,getData.rating,getData.price,getData.options]"/>
+        <div class="right-side">
+          <Rezervation
+            :data="[
+              getData.hotelName,
+              getData.location,
+              getData.rating,
+              getData.price,
+              getData.options,
+            ]"
+            @take-room="takeRoom($event)"
+            @quantity-adult="takeAdult($event)"
+            @quantity-child="takeChild($event)"
+          />
           <div class="rezerve-button">
-          <span class="total-price"><!-- {{(getPrices * quantityAdult) +( quantityChild*getPrices/2)}} -->$</span>
-          <button class="rezerve" >Rezerve</button>
+            <span class="selection-error" ref="selectionError"
+              >Please specify the number of people</span
+            >
+            <span class="selection-error" ref="roomError">
+              Please choose a room type
+            </span>
+            <span class="total-price">{{ totalPrice + optionsPrice }}$</span>
+            <button
+              class="rezerve"
+              @click="toForm(quantityAdult, quantityChild)"
+            >
+              Rezerve
+            </button>
+            
+          </div>
         </div>
-       </div>
-       
-        
       </div>
-      <Properties :comments="getData.comments" :options="getData.options" @take-option="takeOption($event)"/>
-
+      <Properties
+        :comments="getData.comments"
+        :options="getData.options"
+        @take-option="takeOption($event)"
+      />
     </div>
   </div>
 </template>
@@ -32,14 +56,68 @@ export default {
     return {
       HotelsData: json,
       getData: [],
-      getOption:[],
+      getOption: [],
+      getRoom: [],
+      quantityAdult: 2,
+      quantityChild: 0,
     };
   },
-  methods:{
-    takeOption(val){
-      this.getOption = val
-    }
+
+  methods: {
+    takeOption(val) {
+      this.getOption = val;
+    },
+    takeRoom(val) {
+      this.getRoom = val;
+    },
+    takeAdult(val) {
+      this.quantityAdult = val;
+    },
+    takeChild(val) {
+      this.quantityChild = val;
+    },
+    toForm(adult, child) {
+      let number = this.$refs.selectionError.style;
+      let room = this.$refs.roomError.style;
+      if (adult == 0 && child == 0) {
+        number.display = "flex";
+        setTimeout(() => {
+          number.display = "none";
+        }, 2500);
+      }else if(this.getRoom.length == 0){
+        room.display = "flex";
+        setTimeout(() => {
+          room.display = "none";
+        }, 2500);
+      }else{
+        this.$router.push({ name: 'reservation',params:{adult:adult, child:child,options:this.getOption, room:this.getRoom} })
+      }
+    },
   },
+  computed: {
+    optionsPrice() {
+      let optionPrices = 0;
+      for (let index = 0; index < this.getOption.length; index++) {
+        optionPrices += this.getOption[index][0];
+      }
+      return optionPrices;
+    },
+    totalPrice() {
+      let total = 0;
+      if (this.getRoom[1] == undefined) {
+        total = 0
+          /* this.getData.price[0].price * this.quantityAdult +
+          (this.getData.price[0].price / 2) * this.quantityChild; */
+      } else {
+        total =
+          this.getRoom[1] * this.quantityAdult +
+          (this.getRoom[1] / 2) * this.quantityChild;
+      }
+
+      return total;
+    },
+  },
+
   created() {
     for (let i = 0; i < this.HotelsData.length; i++) {
       if (this.HotelsData[i].hotelID == this.$route.params.id) {
@@ -47,11 +125,11 @@ export default {
       }
     }
   },
-  
+
   components: {
     Slider,
     Properties,
-    Rezervation
+    Rezervation,
   },
 };
 </script>
@@ -66,12 +144,11 @@ export default {
   box-shadow: 1px 2px 14px -1px rgba(0, 0, 0, 0.59);
   display: flex;
   flex-direction: column;
-
 }
-.top-side{
+.top-side {
   display: flex;
 }
-.right-side{
+.right-side {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -115,5 +192,21 @@ export default {
   justify-content: center;
   color: white;
   cursor: default;
+}
+.selection-error {
+  width: 248px;
+  height: 25px;
+  background-color: rgb(243, 111, 111);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  position: absolute;
+  top: -35px;
+  color: white;
+  border: 2px solid red;
+  display: none;
 }
 </style>

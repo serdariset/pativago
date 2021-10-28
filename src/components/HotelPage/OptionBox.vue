@@ -4,13 +4,12 @@
       <div
         class="options-checkboxes"
         v-for="(option, index) in options"
-        :key="index"
-      >
+        :key="index">
         <label
           :for="'options' + index"
           class="option-label"
-          :id="'label' + index"
-          @click="chooseOption(index,option.price,option.name)"
+          :id="'selected-label' + index"
+          @click="chooseOption(index)"
         >
           <span class="option-icon">
             <i :class="option.icon"></i>
@@ -20,13 +19,13 @@
           </span>
           <span class="option-price-ribbon"> {{ option.price }}$ </span>
         </label>
-        <!-- v-on:change="$emit('take-option', [option.price,option.name,checked])" -->
+        
         <input
           v-bind:checked="checked"
           v-model="optionInfo"
           v-on:change="$emit('take-option', optionInfo)"
           type="checkbox"
-          :value="[option.price,option.name]"
+          :value="[option.price,option.name,option.icon]"
           :id="'options' + index"
           class="option-checkbox"
         />
@@ -51,7 +50,7 @@ export default {
   mixins: [filters],
   methods: {
     chooseOption(index) {
-      let label = document.getElementById("label" + index);
+      let label = document.getElementById("selected-label" + index);
       label.classList.toggle("selected-button");
       this.checked = !this.checked
     },

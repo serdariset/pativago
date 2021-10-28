@@ -159,11 +159,7 @@ export default {
       data: json,
     };
   },
-  computed: {
-    hotelPage() {
-      return `/hotel/${this.data[0].hotelID}`;
-    },
-  },
+ 
 
   methods: {
     addFavorite() {
@@ -221,10 +217,7 @@ export default {
       document.getElementById(val + id).style.display = "flex";
       crntTarget.className += " selected";
     },
-    /* goToSelfPage(id){
-      let hotelData = this.data
-      this.$router.push({ name:"HotelPage", params:{id:id}, props:{data:hotelData}}) 
-    } */
+    
   },
 };
 </script>

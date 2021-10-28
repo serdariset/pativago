@@ -12,7 +12,7 @@
           >
           </span>
           <span
-          style="color:#616161"
+            style="color: #616161"
             class="fa fa-star"
             v-for="star in 5 - data[2]"
             :key="'start' + star"
@@ -42,36 +42,65 @@
         <div class="rezervation-input-selections">
           <div class="rezervation-inputs">
             <div class="rezervation-action">
-              <span class="action-button" @click="quantityAdult > 0 ? quantityAdult-- : null"><i class="fas fa-minus"></i></span>
+              <span
+                class="action-button"
+                @click="
+                  quantityAdult > 0 ? quantityAdult-- : null, chooseAdult()
+                "
+                ><i class="fas fa-minus"></i
+              ></span>
               <span class="action-result">{{ quantityAdult }}</span>
-              <span class="action-button" @click="quantityAdult++"><i class="fas fa-plus"></i></span>
+              <span
+                class="action-button"
+                @click="quantityAdult++, chooseAdult()"
+                ><i class="fas fa-plus"></i
+              ></span>
             </div>
             <span class="input-for-who">Number of Adults</span>
           </div>
 
           <div class="rezervation-inputs">
             <div class="rezervation-action">
-              <span class="action-button" @click="quantityChild > 0 ? quantityChild-- : null"><i class="fas fa-minus"></i></span>
+              <span
+                class="action-button"
+                @click="
+                  quantityChild > 0 ? quantityChild-- : null, chooseChild()
+                "
+                ><i class="fas fa-minus"></i
+              ></span>
               <span class="action-result">{{ quantityChild }}</span>
-              <span class="action-button" @click="quantityChild++"><i class="fas fa-plus"></i></span>
+              <span
+                class="action-button"
+                @click="quantityChild++, chooseChild()"
+                ><i class="fas fa-plus"></i
+              ></span>
             </div>
             <span class="input-for-who">Number of Children</span>
           </div>
         </div>
 
         <div class="rezervation-input-options">
-          <span
-            class="rezervation-option"
-            @click="getPrice(option.price, index)"
-            v-for="(option, index) in data[3]"
-            :key="index"
-            :value="option.price"
-            :class="index == selectedOption ? 'selected-option' : ''"
-            >
-            {{ option.type | capitalize }}
-            </span>
+          <input
+            type="radio"
+            v-for="(radio, index) in data[3]"
+            :key="'radio' + index"
+            :value="[radio.type, radio.price]"
+            :id="'radio' + index"
+            v-model="roomInfo"
+            v-on:change="$emit('take-room', roomInfo)"
+            class="radio-buttons"
+          />
+          <label
+            :for="'radio' + index"
+            v-for="(radio, index) in data[3]"
+            :key="'label' + index"
+            class="radio-labels"
+            :id="'label' + index"
+            @click="chooseOption(index)"
+            :class="index == checked ? 'selected-label' : ''"
+            >{{ radio.type | capitalize }}
+          </label>
         </div>
-        
       </div>
     </div>
   </div>
@@ -88,23 +117,36 @@ export default {
   data() {
     return {
       date: "",
-      quantityAdult: 3,
+      quantityAdult: 0,
       quantityChild: 0,
       firstPrice: Number,
       lastPrice: Number,
       getPrices: this.data[3][0].price,
       selectedOption: 0,
+      roomInfo: '',
+      checked: Number,
     };
   },
-  methods:{
-    getPrice(val, index){
-      this.getPrices = val
-      this.selectedOption = index
+  methods: {
+    getPrice(val, index) {
+      this.getPrices = val;
+      this.selectedOption = index;
+    },
+    chooseOption(val) {
+      console.log(val);
+      this.checked = val;
+    },
+    chooseAdult() {
+      this.$emit("quantity-adult", this.quantityAdult);
+    },
+    chooseChild(){
+      this.$emit('quantity-child',this.quantityChild)
     }
   },
   created() {
     this.firstPrice = this.data[3][0].price;
     this.lastPrice = this.data[3][this.data[3].length - 1].price;
+    
   },
 };
 </script>
@@ -245,6 +287,7 @@ export default {
   color: #616161;
   font-weight: 800;
 }
+
 .rezervation-input-options {
   width: 100%;
   height: 100px;
@@ -252,8 +295,14 @@ export default {
   align-items: center;
   justify-content: space-around;
   padding: 0 20px;
+  position: relative;
 }
-.rezervation-option {
+.radio-buttons {
+  display: none;
+}
+.radio-labels {
+  display: flex;
+  background-color: aliceblue;
   width: 100px;
   height: 50px;
   background-color: white;
@@ -265,8 +314,10 @@ export default {
   cursor: pointer;
   color: #616161;
   border: 3px solid transparent;
+  z-index: 999;
 }
-.selected-option {
+
+.selected-label {
   border: 3px solid #03a9f4;
 }
 </style>
