@@ -11,7 +11,7 @@
       </div>
       <div class="step-bar third-step-container" :class="stepNumber == 2 ? 'active-step' : 'disable-step'">
         <span class="step-number">3</span>
-        <span class="step-bar-description">Done</span>
+        <span class="step-bar-description">Payment</span>
       </div>
     </div>
   </div>

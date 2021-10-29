@@ -9,14 +9,14 @@
           <AdultForm   v-for="(person,index) in productCard.adult" :key="'person-adult-form'+index"/>
           
         </div>
-        <span class="form-title">Child information</span>
+        <span class="form-title" v-show="productCard.child>0">Child information</span>
         <div class="adults-form">
           <ChildForm v-for="(person,index) in productCard.child" :key="'person-child-form'+index"/>
-          
         </div>
         
       </div>
-      <button @click="nextStep()" class="next-step-button">Next..</button>
+      <Payment v-show="stepNumber == 2"/>
+    <button @click="nextStep()" class="next-step-button">Next..</button> 
     </div>
     
   </div>
@@ -27,6 +27,7 @@ import ReservationCard from "@/components/ReservationPage/ReservationCard";
 import Steppers from "@/components/ReservationPage/Steppers";
 import AdultForm from "@/components/ReservationPage/AdultForm";
 import ChildForm from "@/components/ReservationPage/ChildForm";
+import Payment from "@/components/ReservationPage/Payment";
 export default {
   name: "Reservation",
   components: {
@@ -34,6 +35,7 @@ export default {
     Steppers,
     AdultForm,
     ChildForm,
+    Payment
   },
   data() {
     return {

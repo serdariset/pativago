@@ -59,7 +59,8 @@
             </div>
           </div>
           <div class="price-box">
-            <router-link :to="`/hotel/${item.hotelID}`"> Gooo</router-link>
+           
+            <button class="go-hotel-page"><router-link :to="`/hotel/${item.hotelID}`"><i class="fas fa-angle-right"></i></router-link></button>
           </div>
         </div>
         <div class="bottom-side" :id="`bottomSide${item.hotelID}`">
@@ -217,6 +218,7 @@ export default {
       document.getElementById(val + id).style.display = "flex";
       crntTarget.className += " selected";
     },
+   
     
   },
 };
@@ -228,7 +230,7 @@ export default {
 .card-container {
   width: 1180px;
   height: 300px;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #e0e0e0be;
   box-shadow: 1px 2px 14px -1px rgba(0, 0, 0, 0.59);
   padding: 1rem;
@@ -251,7 +253,7 @@ export default {
   width: 100%;
   height: 0px;
   display: none;
-  border-radius: 15px;
+  border-radius: 10px;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -286,8 +288,8 @@ export default {
   height: 220px;
   background-color: #cfd8dc;
   display: none;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .selected {
   color: #03a9f4;
@@ -307,7 +309,7 @@ export default {
 .image-box {
   width: calc(300px - 2rem);
   height: calc(300px - 2rem);
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
 }
@@ -381,8 +383,28 @@ export default {
 .price-box {
   width: 300px;
   height: calc(300px - 2rem);
-  background-color: turquoise;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
 }
+.go-hotel-page{
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  background-color: #03a9f4;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2rem;
+}
+
 .service-box {
   width: 500px;
   display: flex;
@@ -425,7 +447,7 @@ export default {
   width: 48%;
   height: 85px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 .client {
   width: 85px;
@@ -436,8 +458,8 @@ export default {
   font-size: 2rem;
   color: #455a64;
   background-color: #90a4ae;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .description {
   display: flex;
@@ -493,7 +515,7 @@ export default {
   width: 185px;
   height: 150px;
   background-color: green;
-  border-radius: 15px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;

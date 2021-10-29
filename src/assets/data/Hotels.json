@@ -81,110 +81,227 @@
     },
     {
         "hotelID": 102,
-        "hotelName": "Swissotel The Bosphorus",
-        "location": "İstanbul",
-        "rating": 4,
+        "hotelName": "Royal Tulip Brasília Alvorada",
+        "location": "Rio de Jenerio",
+        "rating": 5,
         "comments": [
             {
-                "name": "Ali Bozbey",
-                "description": "İstanbul’da konaklamak ve toplantı için Harika bir otel şiddetle tavsiye edilir.",
+                "name": "Don Omar",
+                "description": "Whooo pool, awesome",
                 "rate":"9.3"
             },
             {
-                "name": "Ayla Şimşek",
-                "description": "Manzara konfor harika.. En güzel anların yaşanacağı mekan..",
+                "name": "Han Lue",
+                "description": "Snacks are awesome",
                 "rate":"9.6"
             },
             {
-                "name": "Ezgi Güngör",
-                "description": "Bence fiyatı kalitesine ve manzarasına göre gayet makul.",
-                "rate":"8.8"
+                "name": "Brine O'connor",
+                "description": "The cars in the parking lot are great",
+                "rate":"8.3"
             },
             {
-                "name": "Serdar Mutlu",
-                "description": "Ön kapı dormenler rezalet birgün birini sakat bırakacaklar bunun dışında diğer arkadaşlar çözüm odaklı içerisi ise ayrı bir dünya servisin ve ikramların tadını çıkarın",
-                "rate":"7.9"
+                "name": "Dominic Toretto",
+                "description": "Family is everything, come with your family",
+                "rate":"7.5"
+            }
+        ],
+        "options": [
+            {
+                "name":"spa",
+                "price":400,
+                "icon":"fas fa-spa"
+            },
+            {
+                "name":"service",
+                "price":150,
+                "icon":"fas fa-concierge-bell"
+            },
+            {
+                "name":"drinks",
+                "price":750,
+                "icon":"fas fa-coffee"
+            },
+            {
+                "name":"wifi",
+                "price":0,
+                "icon":"fas fa-wifi"
             }
         ],
         "photos": [
-            "101/101-1.jpeg",
-            "101/101-2.jpeg",
-            "101/101-3.jpeg",
-            "101/101-4.jpeg",
-            "101/101-5.jpeg"
+            "102/102-1.jpeg",
+            "102/102-2.jpeg",
+            "102/102-3.jpeg",
+            "102/102-4.jpeg",
+            "102/102-5.jpeg"
         ],
-        "price": 850
+        "price": [
+            {
+                "type":"standart",
+                "price":1150
+            },
+            {
+                "type":"suite",
+                "price":1800
+            },
+            {
+                "type":"businness",
+                "price":2150
+            },
+            {
+                "type":"king",
+                "price":3000
+            }
+        ]
     },
     {
         "hotelID": 103,
-        "hotelName": "Swissotel The Bosphorus",
-        "location": "İstanbul",
-        "rating": 4,
+        "hotelName": "Waikiki Resort Hotel",
+        "location": "Hawai",
+        "rating": 3,
         "comments": [
             {
-                "name": "Ali Bozbey",
-                "description": "İstanbul’da konaklamak ve toplantı için Harika bir otel şiddetle tavsiye edilir.",
-                "rate":"9.3"
+                "name": "Will Smith",
+                "description": "Access to the beach was so close. The Hotel was towards the end of Kalākaua Ave, this made it easier to get into and out of Waikiki.",
+                "rate":"9.1"
             },
             {
-                "name": "Ayla Şimşek",
-                "description": "Manzara konfor harika.. En güzel anların yaşanacağı mekan..",
-                "rate":"9.6"
+                "name": "Jhonny Depp",
+                "description": "Close to the beach and restaurants. Easy to get around nice bed room little outdated but overalls great",
+                "rate":"8.3"
             },
             {
-                "name": "Ezgi Güngör",
-                "description": "Bence fiyatı kalitesine ve manzarasına göre gayet makul.",
-                "rate":"8.8"
+                "name": "Scarlett Johansson",
+                "description": "Dirty ice bucket - no plastic bag for it. The restroom looks old and needs update",
+                "rate":"6.0"
             },
             {
-                "name": "Serdar Mutlu",
-                "description": "Ön kapı dormenler rezalet birgün birini sakat bırakacaklar bunun dışında diğer arkadaşlar çözüm odaklı içerisi ise ayrı bir dünya servisin ve ikramların tadını çıkarın",
-                "rate":"7.9"
+                "name": "Orlando Bloom",
+                "description": "Nice clean hotel.. its near everything, they have ocean view rooms though not ocean front, it will still do the job, cheap but nice",
+                "rate":"8.0"
+            }
+        ],
+        "options": [
+            {
+                "name":"spa",
+                "price":200,
+                "icon":"fas fa-spa"
+            },
+            {
+                "name":"service",
+                "price":100,
+                "icon":"fas fa-concierge-bell"
+            },
+            {
+                "name":"drinks",
+                "price":450,
+                "icon":"fas fa-coffee"
+            },
+            {
+                "name":"wifi",
+                "price":50,
+                "icon":"fas fa-wifi"
             }
         ],
         "photos": [
-            "101/101-1.jpeg",
-            "101/101-2.jpeg",
-            "101/101-3.jpeg",
-            "101/101-4.jpeg",
-            "101/101-5.jpeg"
+            "103/103-1.jpeg",
+            "103/103-2.jpeg",
+            "103/103-3.jpeg",
+            "103/103-4.jpeg",
+            "103/103-5.jpeg"
         ],
-        "price": 850
+        "price": [
+            {
+                "type":"standart",
+                "price":1000
+            },
+            {
+                "type":"suite",
+                "price":1500
+            },
+            {
+                "type":"businness",
+                "price":2000
+            },
+            {
+                "type":"king",
+                "price":2500
+            }
+        ]
     },
     {
         "hotelID": 104,
-        "hotelName": "Swissotel The Bosphorus",
-        "location": "İstanbul",
-        "rating": 4,
+        "hotelName": "Wyndham Sea Pearl Resort Phuket",
+        "location": "Phuket",
+        "rating": 5,
         "comments": [
             {
-                "name": "Ali Bozbey",
-                "description": "İstanbul’da konaklamak ve toplantı için Harika bir otel şiddetle tavsiye edilir.",
-                "rate":"9.3"
+                "name": "Taylor Durden",
+                "description": "No talking about the hotel",
+                "rate":"10"
             },
             {
-                "name": "Ayla Şimşek",
-                "description": "Manzara konfor harika.. En güzel anların yaşanacağı mekan..",
+                "name": "Gandalf the Grey",
+                "description": "Look east at dawn, the view is great",
                 "rate":"9.6"
             },
             {
-                "name": "Ezgi Güngör",
-                "description": "Bence fiyatı kalitesine ve manzarasına göre gayet makul.",
+                "name": "Captain Jack Sparrow",
+                "description": "The waiter didn't call me captain",
                 "rate":"8.8"
             },
             {
-                "name": "Serdar Mutlu",
-                "description": "Ön kapı dormenler rezalet birgün birini sakat bırakacaklar bunun dışında diğer arkadaşlar çözüm odaklı içerisi ise ayrı bir dünya servisin ve ikramların tadını çıkarın",
-                "rate":"7.9"
+                "name": "Legolas Greenleaf",
+                "description": "My elf eyes have never seen better",
+                "rate":"9.1"
+            }
+        ],
+        "options": [
+            {
+                "name":"spa",
+                "price":500,
+                "icon":"fas fa-spa"
+            },
+            {
+                "name":"service",
+                "price":200,
+                "icon":"fas fa-concierge-bell"
+            },
+            {
+                "name":"drinks",
+                "price":1000,
+                "icon":"fas fa-coffee"
+            },
+            {
+                "name":"wifi",
+                "price":250,
+                "icon":"fas fa-wifi"
             }
         ],
         "photos": [
-            "101/101-1.jpeg",
-            "101/101-2.jpeg",
-            "101/101-3.jpeg",
-            "101/101-4.jpeg",
-            "101/101-5.jpeg"
+            "104/104-1.jpeg",
+            "104/104-2.jpeg",
+            "104/104-3.jpeg",
+            "104/104-4.jpeg",
+            "104/104-5.jpeg"
         ],
-        "price": 850
+        "price": [
+            {
+                "type":"standart",
+                "price":900
+            },
+            {
+                "type":"suite",
+                "price":1300
+            },
+            {
+                "type":"businness",
+                "price":1700
+            },
+            {
+                "type":"king",
+                "price":2000
+            }
+        ]
     }
 ]

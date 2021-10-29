@@ -40,6 +40,7 @@
       </div>
       <div class="rezervation-input">
         <div class="rezervation-input-selections">
+
           <div class="rezervation-inputs">
             <div class="rezervation-action">
               <span
@@ -57,6 +58,25 @@
               ></span>
             </div>
             <span class="input-for-who">Number of Adults</span>
+          </div>
+
+          <div class="rezervation-inputs">
+            <div class="rezervation-action">
+              <span
+                class="action-button"
+                @click="
+                  quantityDay > 0 ? quantityDay-- : null, chooseDay()
+                "
+                ><i class="fas fa-minus"></i
+              ></span>
+              <span class="action-result">{{ quantityDay }}</span>
+              <span
+                class="action-button"
+                @click="quantityDay++, chooseDay()"
+                ><i class="fas fa-plus"></i
+              ></span>
+            </div>
+            <span class="input-for-who">Day</span>
           </div>
 
           <div class="rezervation-inputs">
@@ -125,6 +145,7 @@ export default {
       selectedOption: 0,
       roomInfo: '',
       checked: Number,
+      quantityDay:0,
     };
   },
   methods: {
@@ -133,7 +154,6 @@ export default {
       this.selectedOption = index;
     },
     chooseOption(val) {
-      console.log(val);
       this.checked = val;
     },
     chooseAdult() {
@@ -141,6 +161,9 @@ export default {
     },
     chooseChild(){
       this.$emit('quantity-child',this.quantityChild)
+    },
+    chooseDay(){
+      this.$emit('quantity-day',this.quantityDay)
     }
   },
   created() {
@@ -243,7 +266,7 @@ export default {
   flex-direction: column;
 }
 .input-for-who {
-  width: 210px;
+  width: 150px;
   height: 30px;
   background-color: white;
   display: flex;
@@ -263,8 +286,8 @@ export default {
   overflow: hidden;
 }
 .action-button {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,8 +300,8 @@ export default {
   color: white;
 }
 .action-result {
-  width: 90px;
-  height: 60px;
+  width: 70px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;

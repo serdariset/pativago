@@ -95,7 +95,7 @@ export default {
   left: 0;
   display: flex;
   justify-content: center;
-  border-radius:5px;
+  border-radius: 5px;
 
 }
 .main-image {

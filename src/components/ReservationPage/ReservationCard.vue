@@ -12,6 +12,10 @@
             <span>{{ productCard.child }}</span>
             <span>Children</span>
           </div>
+           <div class="people-card-container" >
+            <span>{{ productCard.day }}</span>
+            <span>Day(s)</span>
+          </div>
         </div>
       </div>
       <div class="people-selection">
@@ -46,6 +50,8 @@
         </div>
       </div>
     </div>
+   
+   
   </div>
 </template>
 
@@ -55,6 +61,7 @@ export default {
   name: "ReservationCard",
   props: {
     productCard: Object,
+    stepNumber:Number,
   },
   mixins: [filters],
   computed:{

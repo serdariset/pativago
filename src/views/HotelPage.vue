@@ -15,22 +15,30 @@
             @take-room="takeRoom($event)"
             @quantity-adult="takeAdult($event)"
             @quantity-child="takeChild($event)"
+            @quantity-day="takeDay($event)"
           />
           <div class="rezerve-button">
             <span class="selection-error" ref="selectionError"
               >Please specify the number of people</span
             >
             <span class="selection-error" ref="roomError">
-              Please choose a room type
+              Please select a room type
             </span>
-            <span class="total-price">{{ totalPrice + optionsPrice }}$</span>
+            <span class="selection-error" ref="childError">
+              Children cannot make reservations
+            </span>
+            <span class="selection-error" ref="dayError"
+              >Please specify the number of days</span
+            >
+            <span class="total-price"
+              >{{ (totalPrice + optionsPrice) * getDay }}$</span
+            >
             <button
               class="rezerve"
               @click="toForm(quantityAdult, quantityChild)"
             >
               Rezerve
             </button>
-            
           </div>
         </div>
       </div>
@@ -58,8 +66,9 @@ export default {
       getData: [],
       getOption: [],
       getRoom: [],
-      quantityAdult: 2,
+      quantityAdult: 0,
       quantityChild: 0,
+      getDay: 0,
     };
   },
 
@@ -76,21 +85,45 @@ export default {
     takeChild(val) {
       this.quantityChild = val;
     },
+    takeDay(val) {
+      this.getDay = val;
+    },
     toForm(adult, child) {
       let number = this.$refs.selectionError.style;
+      let childNumber = this.$refs.childError.style;
       let room = this.$refs.roomError.style;
+      let day = this.$refs.dayError.style;
       if (adult == 0 && child == 0) {
         number.display = "flex";
         setTimeout(() => {
           number.display = "none";
         }, 2500);
-      }else if(this.getRoom.length == 0){
+      } else if (this.getRoom.length == 0) {
         room.display = "flex";
         setTimeout(() => {
           room.display = "none";
         }, 2500);
-      }else{
-        this.$router.push({ name: 'reservation',params:{adult:adult, child:child,options:this.getOption, room:this.getRoom} })
+      } else if (this.getDay == 0) {
+        day.display = "flex";
+        setTimeout(() => {
+          day.display = "none";
+        }, 2500);
+      } else if (child > 0 && adult == 0) {
+        childNumber.display = "flex";
+        setTimeout(() => {
+          childNumber.display = "none";
+        }, 2500);
+      } else {
+        this.$router.push({
+          name: "reservation",
+          params: {
+            adult: adult,
+            child: child,
+            options: this.getOption,
+            room: this.getRoom,
+            day: this.getDay,
+          },
+        });
       }
     },
   },
@@ -105,9 +138,7 @@ export default {
     totalPrice() {
       let total = 0;
       if (this.getRoom[1] == undefined) {
-        total = 0
-          /* this.getData.price[0].price * this.quantityAdult +
-          (this.getData.price[0].price / 2) * this.quantityChild; */
+        total = 0;
       } else {
         total =
           this.getRoom[1] * this.quantityAdult +

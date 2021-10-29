@@ -8,7 +8,7 @@ export const filters = {
     //Mahmut İset
   },
 };
-import { minLength, required, email, numeric } from "vuelidate/lib/validators";
+import { minLength, required, email, numeric, maxLength } from "vuelidate/lib/validators";
 
 export const vuelidate = {
   
@@ -47,3 +47,38 @@ export const vuelidate = {
     },
   },
 };
+
+export const payment = {
+  validations:{
+    paymentCard:{
+      fullname:{
+        required,
+        minLength:minLength(3)
+      },
+      cardNumber:{
+        required,
+        minLength:minLength(16),
+        maxLength:maxLength(16),
+        numeric
+      },
+      cardMonth:{
+        required,
+        minLength:minLength(2),
+        maxLength:maxLength(2),
+        numeric
+      },
+      cardYear:{
+        required,
+        minLength:minLength(2),
+        maxLength:maxLength(2),
+        numeric
+      },
+      cardSecure:{
+        required,
+        minLength:minLength(3),
+        maxLength:maxLength(3),
+        numeric
+      }
+    }
+  }
+}

@@ -8,6 +8,6 @@ export const routes = [
     
     { path: '/', component: Home },
     { path: '/reservation', component: ReservationPage, props:true, name:"reservation" },
-    { path: '/hotel/:id', component: HotelPage, props: true}
+    { path: '/hotel/:id', component: HotelPage, props: true,name:'hotel/:id'}
    
   ]
