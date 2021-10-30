@@ -3,47 +3,70 @@
     <div class="payment-card-container">
       <div class="card-information-container payment-box">
         <span class="card-title">Card Owner</span>
-        <div class="payment-form-group">
+
+        <div
+          class="payment-form-group"
+          :class="paymentStatus($v.paymentCard.fullname)"
+        >
           <input
-            type="text"
+            placeholder="Fullname"
             class="payment-card-input"
-            placeholder="Full Name"
             v-model.trim="$v.paymentCard.fullname.$model"
-            @click="showCardFront()"
           />
         </div>
-        <div class="payment-form-group">
+        <div class="error-group">
+            <span v-if="$v.paymentCard.fullname.$dirty? !$v.paymentCard.fullname.required: ''"
+              class="error-span">Bu alan gereklidir</span>
+            <span v-if=" $v.paymentCard.fullname.$dirty ? !$v.paymentCard.fullname.minLength: ''"
+              class="error-span">Minimum 3 karakter giriniz</span>
+          </div>
+
+        <div class="payment-form-group" :class="paymentStatus($v.paymentCard.cardNumber)">
           <input
-            type="text"
+            type="number"
+            style="apperance:none"
             class="payment-card-input"
             placeholder="Card Number"
+            maxlength="16"
             v-model.trim="$v.paymentCard.cardNumber.$model"
             @click="showCardFront()"
             @keyup="letterSpace()"
           />
         </div>
-        <div class="payment-form-group">
-          <input
-            type="text"
-            class="payment-card-input-small"
-            placeholder="Month"
-            @click="showCardFront()"
-            v-model.trim="$v.paymentCard.cardMonth.$model"
-          />
-          <input
-            type="text"
-            class="payment-card-input-small"
-            placeholder="Year"
-            v-model.trim="$v.paymentCard.cardYear.$model"
-            @click="showCardFront()"
-          />
-          <input
-            type="text"
-            class="payment-card-input-small"
-            placeholder="Secure"
-            @click="showCardBack()"
-            v-model.trim="$v.paymentCard.cardSecure.$model"
-          />
+        <div class="error-group">
+            <span v-if="$v.paymentCard.cardNumber.$dirty? !$v.paymentCard.cardNumber.required: ''"
+              class="error-span">Bu alan gereklidir</span>
+            <span v-if=" $v.paymentCard.cardNumber.$dirty ? !$v.paymentCard.cardNumber.minLength: ''"
+              class="error-span">16 karakter giriniz</span>
+          </div>
+        <div class="small-form-group-container">
+          <div class="payment-form-group-small" :class="paymentStatus($v.paymentCard.cardMonth)">
+            <input
+              type="text"
+              class="payment-card-input-small"
+              placeholder="Month"
+              @click="showCardFront()"
+              v-model.trim="$v.paymentCard.cardMonth.$model"
+            />
+          </div>
+          <div class="payment-form-group-small" :class="paymentStatus($v.paymentCard.cardYear)">
+            <input
+              type="text"
+              class="payment-card-input-small"
+              placeholder="Year"
+              v-model.trim="$v.paymentCard.cardYear.$model"
+              @click="showCardFront()"
+            />
+          </div>
+          <div class="payment-form-group-small" :class="paymentStatus($v.paymentCard.cardSecure)">
+            <input
+              type="text"
+              class="payment-card-input-small"
+              placeholder="Secure"
+              @click="showCardBack()"
+              v-model.trim="$v.paymentCard.cardSecure.$model"
+            />
+          </div>
         </div>
       </div>
 
@@ -61,7 +84,7 @@
               <div ref="cardNumberSpaced" class="cardNumberSpaced"></div>
             </div>
             <div class="card-front-bottom">
-              <span class="card-owner-name">{{
+              <span class="card-owner-name" ref="fullNameRef">{{
                 $v.paymentCard.fullname.$model
               }}</span>
               <div class="card-date-info-container">
@@ -78,10 +101,13 @@
           <div class="back" ref="backFace">
             <span class="black-strip"></span>
             <div class="secure-strip-container">
-              <div class="secure-strip"><span>{{$v.paymentCard.cardSecure.$model}}</span></div>
+              <div class="secure-strip">
+                <span>{{ $v.paymentCard.cardSecure.$model }}</span>
+              </div>
             </div>
           </div>
         </div>
+        <button class="next-step-button" @click="submitPayment()">Pay</button>
       </div>
     </div>
   </div>
@@ -91,7 +117,7 @@
 import { payment } from "@/mixins/global.js";
 export default {
   name: "Payment",
-  mixins: [payment],
+
   data() {
     return {
       paymentCard: {
@@ -104,6 +130,7 @@ export default {
       cardFace: 0,
     };
   },
+  mixins: [payment],
   methods: {
     letterSpace() {
       let cardNumberSpan = this.$refs.cardNumberRef.innerHTML;
@@ -130,8 +157,22 @@ export default {
       frontFace.transform = "perspective(1000px) rotateY(0deg)";
       backFace.transform = "perspective(1000px) rotateY(-180deg)";
     },
-    asdf() {
-      console.log("val.keyCode");
+    paymentStatus(validation) {
+      if (validation.$dirty) {
+        if (validation.$error) {
+          return "paymentFormError";
+        } else {
+          return "paymentFormSuccess";
+        }
+      }
+    },
+    submitPayment() {
+      if(this.$v.paymentCard.$dirty && !this.$v.paymentCard.$error){
+        let fullNameRef = this.$refs.fullNameRef.innerHTML;
+      let showNextStep = 3;
+      this.$emit("full-name", [fullNameRef, showNextStep]);
+      }
+     
     },
   },
 };
@@ -140,6 +181,7 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@800&display=swap");
+
 .payment-card-container {
   width: calc(1180px - 2rem);
   height: auto;
@@ -161,6 +203,9 @@ export default {
 .card-information-container {
   padding: 1rem;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .card-title {
   font-family: "Poppins", sans-serif;
@@ -171,30 +216,55 @@ export default {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  height: 30px;
-  margin-bottom: 10px;
 }
 .payment-form-group {
-  width: calc(400px - 2rem);
+  width: 100%;
   display: flex;
-  height: 50px;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: white;
+  border: 2px solid #acabab;
+  border-radius: 5px;
 }
 
 .payment-card-input {
   width: 100%;
   outline: none;
-  border: 1px solid #acabab;
+  border: none;
   font-family: "Poppins", sans-serif;
   padding-left: 1rem;
-  border-radius: 10px;
+  height: 30px;
+  border-radius: 5px;
+}
+.small-form-group-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.payment-form-group-small {
+  width: 30%;
+  display: flex;
   height: 40px;
+  background-color: white;
+  border: 2px solid #acabab;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.paymentFormError {
+  border-color: red;
+}
+.paymentFormSuccess {
+  border-color: #5a5;
 }
 .payment-card-input-small {
-  width: 30%;
+  width: 100%;
   outline: none;
-  border: 1px solid #acabab;
+  border: none;
   font-family: "Poppins", sans-serif;
   padding-left: 1rem;
   border-radius: 10px;
@@ -232,27 +302,25 @@ export default {
   transform: perspective(1000px) rotateY(-180deg);
   transition: 1s;
   border-radius: 15px;
-  
-
 }
 .box:hover .back {
   transform: perspective(1000px) rotateY(0deg);
 }
-.black-strip{
+.black-strip {
   width: 100%;
   height: 60px;
   display: flex;
   margin-top: 2rem;
   background-color: black;
 }
-.secure-strip-container{
+.secure-strip-container {
   width: 100%;
   height: 40px;
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
-.secure-strip{
+.secure-strip {
   background-color: white;
   width: 75%;
   height: 35px;
@@ -263,7 +331,7 @@ export default {
   font-family: "Sriracha", cursive;
   overflow: hidden;
 }
-.secure-strip span{
+.secure-strip span {
   width: 45px;
   height: 35px;
   background-color: grey;

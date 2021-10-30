@@ -157,6 +157,7 @@
         >
       </div>
     </form>
+    <button class="next-step-button" @click="submitInformation($v.user)">Next..</button>
   </div>
 </template>
 
@@ -196,6 +197,13 @@ export default {
         }
       }
     },
+    submitInformation(val){
+      if(!val.$error && val.$dirty){
+      let showPayment = 2;
+      this.$emit("info-submit",showPayment);
+      }
+
+    }
   },
 };
 </script>

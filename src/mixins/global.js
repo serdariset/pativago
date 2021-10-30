@@ -8,10 +8,15 @@ export const filters = {
     //Mahmut İset
   },
 };
-import { minLength, required, email, numeric, maxLength } from "vuelidate/lib/validators";
+import {
+  minLength,
+  required,
+  email,
+  numeric,
+  maxLength,
+} from "vuelidate/lib/validators";
 
 export const vuelidate = {
-  
   validations: {
     user: {
       name: {
@@ -49,36 +54,36 @@ export const vuelidate = {
 };
 
 export const payment = {
-  validations:{
-    paymentCard:{
-      fullname:{
+  validations: {
+    paymentCard: {
+      fullname: {
         required,
-        minLength:minLength(3)
+        minLength: minLength(3),
       },
-      cardNumber:{
+      cardNumber: {
         required,
-        minLength:minLength(16),
-        maxLength:maxLength(16),
-        numeric
+        minLength: minLength(16),
+        maxLength: maxLength(16),
+        numeric,
       },
-      cardMonth:{
+      cardMonth: {
         required,
-        minLength:minLength(2),
-        maxLength:maxLength(2),
-        numeric
+        minLength: minLength(2),
+        maxLength: maxLength(2),
+        numeric,
       },
-      cardYear:{
+      cardYear: {
         required,
-        minLength:minLength(2),
-        maxLength:maxLength(2),
-        numeric
+        minLength: minLength(2),
+        maxLength: maxLength(2),
+        numeric,
       },
-      cardSecure:{
+      cardSecure: {
         required,
-        minLength:minLength(3),
-        maxLength:maxLength(3),
-        numeric
-      }
-    }
-  }
-}
+        minLength: minLength(3),
+        maxLength: maxLength(3),
+        numeric,
+      },
+    },
+  },
+};

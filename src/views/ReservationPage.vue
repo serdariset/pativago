@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="reservation-page-container">
-      <Steppers :stepNumber="stepNumber" />
+    <div class="reservation-page-container" :class="stepNumber == 3  ? 'paymentPage' : '' ">
+      <Steppers :stepNumber="stepNumber" v-show="stepNumber == 1 || stepNumber == 2 || stepNumber == 0"/>
       <ReservationCard :productCard="productCard" v-show="stepNumber == 0"/>
       <div class="person-form-container" v-show="stepNumber == 1">
         <span class="form-title">Adult information</span>
         <div class="adults-form">
-          <AdultForm   v-for="(person,index) in productCard.adult" :key="'person-adult-form'+index"/>
+          <AdultForm   v-for="(person,index) in productCard.adult" :key="'person-adult-form'+index" @info-submit="takeSubmit($event)"/>
           
         </div>
         <span class="form-title" v-show="productCard.child>0">Child information</span>
@@ -15,8 +15,10 @@
         </div>
         
       </div>
-      <Payment v-show="stepNumber == 2"/>
-    <button @click="nextStep()" class="next-step-button">Next..</button> 
+      <Payment v-show="stepNumber == 2" @full-name="takePayment($event)"/>
+      <ResultModal v-show="stepNumber==3" :paymentName="paymentName"/>
+      <button @click="nextStep()" class="next-step-button" v-show="stepNumber == 0 ">Next..</button> 
+    
     </div>
     
   </div>
@@ -28,6 +30,7 @@ import Steppers from "@/components/ReservationPage/Steppers";
 import AdultForm from "@/components/ReservationPage/AdultForm";
 import ChildForm from "@/components/ReservationPage/ChildForm";
 import Payment from "@/components/ReservationPage/Payment";
+import ResultModal from "@/components/ReservationPage/ResultModal";
 export default {
   name: "Reservation",
   components: {
@@ -35,18 +38,27 @@ export default {
     Steppers,
     AdultForm,
     ChildForm,
-    Payment
+    Payment,
+    ResultModal
   },
   data() {
     return {
       stepNumber: 0,
       productCard: this.$route.params,
+      paymentName:'',
     };
   },
   methods: {
     nextStep() {
-      this.stepNumber < 2 ? this.stepNumber++ : null;
+      this.stepNumber < 1 ? this.stepNumber++ : null;
     },
+    takePayment(val){
+      this.paymentName = val[0]
+      this.stepNumber = val[1]
+    },
+    takeSubmit(val){
+      this.stepNumber = val
+    }
     
   },
 };
@@ -65,6 +77,10 @@ export default {
   box-shadow: 1px 2px 14px -1px rgba(0, 0, 0, 0.59);
   border-radius: 10px;
   position: relative;
+}
+.paymentPage{
+  width: 500px;
+  height: 500px;
 }
 .person-form-container {
   width: 100%;

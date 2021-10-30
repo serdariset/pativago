@@ -9,9 +9,7 @@
               alt=""
               class="hotel-mini-image"
             />
-            <div class="favorite-button" @click="addFavorite()">
-              <i class="far fa-heart" ref="favoriteButton"></i>
-            </div>
+           
           </div>
           <div class="property-box">
             <div>
@@ -46,11 +44,11 @@
                   >comments<i class="fas fa-comment"></i
                 ></span>
               </div>
-              <div class="services">
+              <!-- <div class="services">
                 <span @click="showServiceBox('services', item.hotelID)"
                   >services<i class="fas fa-concierge-bell"></i
                 ></span>
-              </div>
+              </div> -->
               <div class="photos">
                 <span @click="showServiceBox('photos', item.hotelID)"
                   >photos <i class="fas fa-image"></i
@@ -71,12 +69,12 @@
             >
               Comments
             </div>
-            <div
+            <!-- <div
               :class="['bottom-tag', `bottom-tag${item.hotelID}`]"
               @click.prevent="changeBox($event, 'services', item.hotelID)"
             >
               Services
-            </div>
+            </div> -->
             <div
               :class="['bottom-tag', `bottom-tag${item.hotelID}`]"
               @click.prevent="changeBox($event, 'photos', item.hotelID)"
@@ -118,12 +116,12 @@
                 </span>
               </div>
             </div>
-            <div
+            <!-- <div
               :class="['bottom-boxes', `bottom-boxes${item.hotelID}`]"
               :id="`services${item.hotelID}`"
             >
               asda
-            </div>
+            </div> -->
             <div
               :class="[
                 'bottom-boxes',
@@ -163,13 +161,7 @@ export default {
  
 
   methods: {
-    addFavorite() {
-      //Favorite button color and type change
-      let element = this.$refs.favoriteButton;
-      let classes = element.classList;
-      classes.toggle("fas");
-      console.log(this.data.comments);
-    },
+    
 
     showServiceBox(val, id) {
       //Show bottom side and card container change
@@ -321,26 +313,7 @@ export default {
 .hotel-mini-image:hover {
   transform: scale(1.15);
 }
-.favorite-button {
-  position: absolute;
-  z-index: 999;
-  top: 10px;
-  left: 10px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: white;
-  transition: 0.3s ease;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.59);
-}
-.favorite-button:hover {
-  color: red;
-}
+
 .fas.fa-heart {
   color: red;
 }
